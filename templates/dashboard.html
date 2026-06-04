@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Dashboard - NeuroGen Atlas</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<nav>
+
+    <div class="logo">
+        NEUROGEN
+    </div>
+
+    <div class="nav-links">
+
+        <a>
+            {{ username }}
+        </a>
+
+        <a href="/logout">
+            Sair
+        </a>
+
+    </div>
+
+</nav>
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <h1>
+            Bem-vindo,
+            <span>{{ username }}</span>
+        </h1>
+
+        <p>
+            Você está conectado ao NeuroGen Atlas.
+            Centro de projetos, inteligência artificial,
+            pesquisa científica e engenharia avançada.
+        </p>
+
+    </div>
+
+</section>
+
+<div class="page">
+
+    <h2 class="title">
+        Painel Principal
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>
+                🤖 Atlas AI
+            </h3>
+
+            <p>
+                Converse com a inteligência artificial da NeuroGen.
+            </p>
+
+            <div class="status-pill pill-active">
+                <div class="pill-dot"></div>
+                Online
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+                🚀 Projetos
+            </h3>
+
+            <p>
+                Acompanhe o desenvolvimento do AURORA-X,
+                Genesis AI e demais iniciativas.
+            </p>
+
+            <div class="status-pill pill-active">
+                <div class="pill-dot"></div>
+                Ativo
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+                🧬 Pesquisas
+            </h3>
+
+            <p>
+                Artigos, estudos e documentação técnica.
+            </p>
+
+            <div class="status-pill pill-dev">
+                <div class="pill-dot"></div>
+                Em desenvolvimento
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+                👤 Perfil
+            </h3>
+
+            <p>
+                Gerencie sua conta e informações pessoais.
+            </p>
+
+            <div class="status-pill pill-active">
+                <div class="pill-dot"></div>
+                Disponível
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="page">
+
+    <h2 class="title">
+        Atlas AI
+    </h2>
+
+    <div class="chat-wrap">
+
+        <div class="chat-box">
+
+            <div class="chat-top">
+
+                <div class="chat-dot"></div>
+
+                <div class="chat-name">
+                    ATLAS AI
+                </div>
+
+            </div>
+
+            <div
+                class="chat-msgs"
+                id="chat-msgs"
+            >
+
+                <div class="msg ai">
+
+                    <div class="msg-avatar">
+                        NG
+                    </div>
+
+                    <div class="msg-bubble">
+                        Olá {{ username }}.
+                        Bem-vindo ao NeuroGen Atlas.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="chat-input-row">
+
+                <input
+                    id="chat-input"
+                    class="chat-input"
+                    placeholder="Digite sua pergunta..."
+                >
+
+                <button
+                    id="send-btn"
+                    class="chat-send"
+                    onclick="sendMsg()"
+                >
+                    Enviar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+async function sendMsg() {
+
+    const input =
+        document.getElementById("chat-input");
+
+    const text =
+        input.value.trim();
+
+    if (!text) return;
+
+    const msgs =
+        document.getElementById("chat-msgs");
+
+    msgs.innerHTML += `
+        <div class="msg user">
+            <div class="msg-avatar">EU</div>
+            <div class="msg-bubble">${text}</div>
+        </div>
+    `;
+
+    input.value = "";
+
+    const response =
+        await fetch("/chat", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                message: text
+            })
+
+        });
+
+    const data =
+        await response.json();
+
+    msgs.innerHTML += `
+        <div class="msg ai">
+            <div class="msg-avatar">NG</div>
+            <div class="msg-bubble">${data.reply}</div>
+        </div>
+    `;
+
+    msgs.scrollTop =
+        msgs.scrollHeight;
+}
+
+</script>
+
+</body>
+</html>

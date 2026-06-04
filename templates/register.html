@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Cadastro - NeuroGen Atlas</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<div class="auth-page">
+
+    <div class="auth-glow"></div>
+
+    <div class="auth-card">
+
+        <h1 class="auth-logo">
+            NEUROGEN ATLAS
+        </h1>
+
+        <p class="auth-subtitle">
+            Crie sua conta para acessar o Atlas.
+        </p>
+
+        <form
+            id="register-form"
+            class="auth-form"
+        >
+
+            <input
+                class="auth-input"
+                type="text"
+                id="username"
+                placeholder="Usuário"
+                required
+            >
+
+            <input
+                class="auth-input"
+                type="email"
+                id="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                class="auth-input"
+                type="password"
+                id="password"
+                placeholder="Senha"
+                required
+            >
+
+            <button
+                class="auth-btn"
+                type="submit"
+            >
+                Criar Conta
+            </button>
+
+        </form>
+
+        <div class="auth-divider"></div>
+
+        <div class="auth-footer">
+
+            Já possui conta?
+
+            <a href="/">
+                Entrar
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+
+</body>
+</html>
