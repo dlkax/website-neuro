@@ -1,7 +1,5 @@
 /* login */
 
-console.log("LOGIN JS CARREGADO!")
-
 document
 .getElementById("login-form")
 .addEventListener("submit", async (e) => {

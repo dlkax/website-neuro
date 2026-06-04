@@ -34,8 +34,6 @@ document
 
     if (data.success) {
 
-        alert("Conta criada!");
-
         window.location.href = "/";
 
     } else {
