@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas AI - NeuroGen</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div id="stars"></div>
+
+<nav>
+  <div class="logo" onclick="window.location.href='/'">NEUROGEN</div>
+  <div class="nav-links">
+    <a href="/">Início</a>
+    <a href="/divisoes">Divisões</a>
+    <a href="/projetos">Projetos</a>
+    <a href="/atlas" class="active">Atlas AI</a>
+    {% if username %}
+      <a href="/dashboard">Dashboard</a>
+      <span class="user-badge">👤 {{ username }}</span>
+      <a href="/logout">Sair</a>
+    {% else %}
+      <a href="/login">Entrar</a>
+    {% endif %}
+  </div>
+</nav>
+
+<div class="page">
+  <h2 class="title">Atlas AI</h2>
+  <div class="chat-wrap">
+    <div class="quick-prompts">
+      <button class="quick-btn" onclick="sendQuick(this)">O que é o AURORA-X?</button>
+      <button class="quick-btn" onclick="sendQuick(this)">Explique Genesis AI</button>
+      <button class="quick-btn" onclick="sendQuick(this)">Projetos ativos</button>
+      <button class="quick-btn" onclick="sendQuick(this)">Visão da NeuroGen</button>
+    </div>
+    <div class="chat-box">
+      <div class="chat-top">
+        <div class="chat-dot"></div>
+        <div class="chat-name">ATLAS AI</div>
+      </div>
+      <div class="chat-msgs" id="chat-msgs">
+        <div class="msg ai">
+          <div class="msg-avatar">NG</div>
+          <div class="msg-bubble">Olá! Sou o <strong>Atlas AI</strong>, assistente de inteligência artificial da NeuroGen. Posso te ajudar com informações sobre nossos projetos, divisões e tecnologias.<br><br>Como posso ajudar você hoje?</div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input class="chat-input" id="chat-input" type="text" placeholder="Pergunte sobre a NeuroGen..." onkeydown="if(event.key==='Enter') sendMsg()">
+        <button class="chat-send" id="send-btn" onclick="sendMsg()">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 NeuroGen Technologies • Todos os direitos reservados</footer>
+
+<div class="bottom-tabs">
+  <div class="bottom-tabs-inner">
+    <a href="/" class="tab-btn">
+      <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+      <span class="tab-label">Início</span>
+    </a>
+    <a href="/divisoes" class="tab-btn">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+      <span class="tab-label">Divisões</span>
+    </a>
+    <a href="/projetos" class="tab-btn">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span class="tab-label">Projetos</span>
+    </a>
+    <a href="/atlas" class="tab-btn active">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <span class="tab-label">Atlas AI</span>
+    </a>
+  </div>
+</div>
+
+<script>
+const starsContainer = document.getElementById("stars");
+for(let i = 0; i < 500; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  const size = Math.random() * 2 + 1;
+  star.style.width = size + "px";
+  star.style.height = size + "px";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDuration = (Math.random() * 5 + 3) + "s";
+  star.style.animationDelay = (Math.random() * 10) + "s";
+  starsContainer.appendChild(star);
+}
+
+function sendQuick(btn) {
+  document.getElementById('chat-input').value = btn.textContent.trim();
+  sendMsg();
+}
+
+async function sendMsg() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  const btn = document.getElementById('send-btn');
+  btn.disabled = true;
+  input.value = '';
+
+  const msgs = document.getElementById('chat-msgs');
+  msgs.innerHTML += `<div class="msg user"><div class="msg-avatar">EU</div><div class="msg-bubble">${text}</div></div>`;
+
+  const tid = 'typing-' + Date.now();
+  msgs.innerHTML += `<div class="msg ai" id="${tid}"><div class="msg-avatar">NG</div><div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div></div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  try {
+    const res = await fetch('/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text })
+    });
+    const data = await res.json();
+    document.getElementById(tid).outerHTML = `<div class="msg ai"><div class="msg-avatar">NG</div><div class="msg-bubble">${data.reply.replace(/\n/g, '<br>')}</div></div>`;
+  } catch(e) {
+    document.getElementById(tid).outerHTML = `<div class="msg ai"><div class="msg-avatar">NG</div><div class="msg-bubble">Falha na conexão. Tente novamente.</div></div>`;
+  }
+
+  btn.disabled = false;
+  msgs.scrollTop = msgs.scrollHeight;
+}
+</script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeuroGen Atlas</title>
+<title>Projetos - NeuroGen Atlas</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/style.css">
 </head>
@@ -14,9 +14,9 @@
 <nav>
   <div class="logo" onclick="window.location.href='/'">NEUROGEN</div>
   <div class="nav-links">
-    <a href="/" class="active">Início</a>
+    <a href="/">Início</a>
     <a href="/divisoes">Divisões</a>
-    <a href="/projetos">Projetos</a>
+    <a href="/projetos" class="active">Projetos</a>
     <a href="/atlas">Atlas AI</a>
     {% if username %}
       <a href="/dashboard">Dashboard</a>
@@ -28,34 +28,47 @@
   </div>
 </nav>
 
-<div class="hero">
-  <div class="hero-inner">
-    <h1>NEURO<span>GEN</span></h1>
-    <p>A gente acredita que o maior salto da história humana ainda está por vir — e está sendo construído agora, na interseção entre biologia, IA e exploração espacial.</p>
-    <div class="btns">
-      <a href="/divisoes" class="btn btn-primary">O que fazemos</a>
-      <a href="/projetos" class="btn btn-outline">Ver projetos</a>
+<div class="page">
+  <h2 class="title">Projetos</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>NeuroGen Atlas</h3>
+      <p>O portal que você está usando agora. Centraliza conhecimento, projetos e IA num só lugar — porque informação espalhada não serve a ninguém.</p>
+      <div class="status-pill pill-active"><div class="pill-dot"></div>Ativo</div>
+    </div>
+    <div class="card">
+      <h3>AURORA-X</h3>
+      <p>Conceito de propulsão iônica para missões de longa distância. Ainda tem muito chão pela frente, mas a direção está certa.</p>
+      <div class="status-pill pill-active"><div class="pill-dot"></div>Ativo</div>
+    </div>
+    <div class="card">
+      <h3>Genesis AI</h3>
+      <p>Um sistema multiagente de IA focado em ciência e engenharia. A ideia é simples: fazer a IA trabalhar como uma equipe, não como um único cérebro.</p>
+      <div class="status-pill pill-active"><div class="pill-dot"></div>Ativo</div>
+    </div>
+    <div class="card">
+      <h3>Projeto Helix</h3>
+      <p>Edição genômica com CRISPR-Next para doenças raras. Ainda em desenvolvimento, mas cada iteração chega mais perto de algo que pode mudar vidas de verdade.</p>
+      <div class="status-pill pill-dev"><div class="pill-dot"></div>Em desenvolvimento</div>
+    </div>
+    <div class="card">
+      <h3>Nova Interface</h3>
+      <p>Interface neural não invasiva para comunicação humano-máquina. Menos ficção científica, mais engenharia séria — estamos trabalhando nisso.</p>
+      <div class="status-pill pill-dev"><div class="pill-dot"></div>Em desenvolvimento</div>
+    </div>
+    <div class="card">
+      <h3>QuantumCore</h3>
+      <p>Processador quântico fotônico para simulações moleculares. Ainda na fase de pesquisa — honestamente, é o projeto mais difícil que temos.</p>
+      <div class="status-pill pill-research"><div class="pill-dot"></div>Pesquisa</div>
     </div>
   </div>
-</div>
-
-<div class="page" style="padding-top:60px; padding-bottom:40px;">
-  <h2 class="title">Sobre Nós</h2>
-  <p class="about">A NeuroGen nasceu de uma pergunta simples: e se as maiores áreas do conhecimento humano parassem de trabalhar separadas? Juntamos inteligência artificial, biotecnologia e engenharia espacial num único lugar — não por moda, mas porque acreditamos que os problemas reais exigem esse tipo de pensamento cruzado.</p>
-</div>
-
-<div class="divider"></div>
-
-<div class="page" style="padding-top:60px; padding-bottom:80px;">
-  <h2 class="title">Nossa Visão</h2>
-  <p class="vision">Não queremos só acompanhar o futuro — queremos ter participado de construí-lo. Cada projeto aqui é uma aposta de que a próxima grande virada da humanidade vai depender de gente disposta a conectar o que ainda não foi conectado.</p>
 </div>
 
 <footer>© 2026 NeuroGen Technologies • Todos os direitos reservados</footer>
 
 <div class="bottom-tabs">
   <div class="bottom-tabs-inner">
-    <a href="/" class="tab-btn active">
+    <a href="/" class="tab-btn">
       <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
       <span class="tab-label">Início</span>
     </a>
@@ -63,7 +76,7 @@
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
       <span class="tab-label">Divisões</span>
     </a>
-    <a href="/projetos" class="tab-btn">
+    <a href="/projetos" class="tab-btn active">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       <span class="tab-label">Projetos</span>
     </a>

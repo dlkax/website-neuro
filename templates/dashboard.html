@@ -1,15 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard - NeuroGen Atlas</title>
+<title>NeuroGen Atlas Dashboard</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
@@ -24,9 +24,13 @@
 
     <div class="nav-links">
 
-        <a>
-            {{ username }}
+        <a href="/">
+            Site Principal
         </a>
+
+        <span class="user-badge">
+            👤 {{ username }}
+        </span>
 
         <a href="/logout">
             Sair
@@ -36,226 +40,142 @@
 
 </nav>
 
-<section class="hero">
+<section class="dashboard-container">
 
-    <div class="hero-inner">
+    <div class="dashboard-header">
 
         <h1>
-            Bem-vindo,
-            <span>{{ username }}</span>
+            Bem-vindo, {{ username }}
         </h1>
 
         <p>
-            Você está conectado ao NeuroGen Atlas.
-            Centro de projetos, inteligência artificial,
-            pesquisa científica e engenharia avançada.
+            Centro de controle da NeuroGen Atlas.
         </p>
+
+    </div>
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <h3>👤 Perfil</h3>
+
+            <p>
+                Usuário autenticado no sistema.
+            </p>
+
+            <div class="dashboard-value">
+                {{ username }}
+            </div>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h3>🚀 Projetos</h3>
+
+            <p>
+                Projetos ativos da NeuroGen.
+            </p>
+
+            <div class="dashboard-value">
+                6
+            </div>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h3>🤖 Atlas AI</h3>
+
+            <p>
+                Assistente disponível.
+            </p>
+
+            <div class="dashboard-value">
+                ONLINE
+            </div>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h3>🧬 Divisões</h3>
+
+            <p>
+                Áreas de pesquisa.
+            </p>
+
+            <div class="dashboard-value">
+                4
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-panel">
+
+        <h2>
+            Painel NeuroGen
+        </h2>
+
+        <p>
+            Futuramente você poderá acessar:
+        </p>
+
+        <ul>
+
+            <li>Atlas AI Premium</li>
+
+            <li>Projetos privados</li>
+
+            <li>Perfil completo</li>
+
+            <li>Configurações da conta</li>
+
+            <li>Sistema de equipes</li>
+
+            <li>NeuroGen Research Hub</li>
+
+        </ul>
 
     </div>
 
 </section>
 
-<div class="page">
-
-    <h2 class="title">
-        Painel Principal
-    </h2>
-
-    <div class="cards">
-
-        <div class="card">
-
-            <h3>
-                🤖 Atlas AI
-            </h3>
-
-            <p>
-                Converse com a inteligência artificial da NeuroGen.
-            </p>
-
-            <div class="status-pill pill-active">
-                <div class="pill-dot"></div>
-                Online
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-                🚀 Projetos
-            </h3>
-
-            <p>
-                Acompanhe o desenvolvimento do AURORA-X,
-                Genesis AI e demais iniciativas.
-            </p>
-
-            <div class="status-pill pill-active">
-                <div class="pill-dot"></div>
-                Ativo
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-                🧬 Pesquisas
-            </h3>
-
-            <p>
-                Artigos, estudos e documentação técnica.
-            </p>
-
-            <div class="status-pill pill-dev">
-                <div class="pill-dot"></div>
-                Em desenvolvimento
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-                👤 Perfil
-            </h3>
-
-            <p>
-                Gerencie sua conta e informações pessoais.
-            </p>
-
-            <div class="status-pill pill-active">
-                <div class="pill-dot"></div>
-                Disponível
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<div class="divider"></div>
-
-<div class="page">
-
-    <h2 class="title">
-        Atlas AI
-    </h2>
-
-    <div class="chat-wrap">
-
-        <div class="chat-box">
-
-            <div class="chat-top">
-
-                <div class="chat-dot"></div>
-
-                <div class="chat-name">
-                    ATLAS AI
-                </div>
-
-            </div>
-
-            <div
-                class="chat-msgs"
-                id="chat-msgs"
-            >
-
-                <div class="msg ai">
-
-                    <div class="msg-avatar">
-                        NG
-                    </div>
-
-                    <div class="msg-bubble">
-                        Olá {{ username }}.
-                        Bem-vindo a NeuroGen Atlas.
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="chat-input-row">
-
-                <input
-                    id="chat-input"
-                    class="chat-input"
-                    placeholder="Digite sua pergunta..."
-                >
-
-                <button
-                    id="send-btn"
-                    class="chat-send"
-                    onclick="sendMsg()"
-                >
-                    Enviar
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
 <script>
 
-async function sendMsg() {
+const starsContainer =
+document.getElementById("stars");
 
-    const input =
-        document.getElementById("chat-input");
+for(let i=0;i<400;i++){
 
-    const text =
-        input.value.trim();
+    const star =
+    document.createElement("div");
 
-    if (!text) return;
+    star.className="star";
 
-    const msgs =
-        document.getElementById("chat-msgs");
+    const size =
+    Math.random()*2+1;
 
-    msgs.innerHTML += `
-        <div class="msg user">
-            <div class="msg-avatar">EU</div>
-            <div class="msg-bubble">${text}</div>
-        </div>
-    `;
+    star.style.width=size+"px";
+    star.style.height=size+"px";
 
-    input.value = "";
+    star.style.left=
+    Math.random()*100+"%";
 
-    const response =
-        await fetch("/chat", {
+    star.style.top=
+    Math.random()*100+"%";
 
-            method: "POST",
+    star.style.animationDuration=
+    (Math.random()*5+3)+"s";
 
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                message: text
-            })
-
-        });
-
-    const data =
-        await response.json();
-
-    msgs.innerHTML += `
-        <div class="msg ai">
-            <div class="msg-avatar">NG</div>
-            <div class="msg-bubble">${data.reply}</div>
-        </div>
-    `;
-
-    msgs.scrollTop =
-        msgs.scrollHeight;
+    starsContainer.appendChild(star);
 }
 
 </script>
 
 </body>
 </html>
+
