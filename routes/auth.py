@@ -107,6 +107,9 @@ def login():
 
         session["user_id"] = user["id"]
         session["username"] = user["username"]
+        session["email"] = user["email"]
+        session["created_at"] = user["created_at"]
+        session["role"] = user["role"]
 
         print("SESSION SALVA:")
         print(dict(session))

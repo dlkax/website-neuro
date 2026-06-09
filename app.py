@@ -72,9 +72,17 @@ def atlas():
 
 @app.route("/dashboard")
 def dashboard():
+
     if "user_id" not in session:
         return redirect("/login")
-    return render_template("dashboard.html", username=session.get("username"))
+
+    return render_template(
+        "dashboard.html",
+        username=session.get("username"),
+        email=session.get("email"),
+        created_at=session.get("created_at"),
+        role=session.get("role")
+    )
 
 @app.route("/login")
 def login_page():

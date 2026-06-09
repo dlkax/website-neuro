@@ -31,7 +31,7 @@
 <div class="hero">
   <div class="hero-inner">
     <h1>NEURO<span>GEN</span></h1>
-    <p>A gente acredita que o maior salto da história humana ainda está por vir — e está sendo construído agora, na interseção entre biologia, IA e exploração espacial.</p>
+    <p>A gente acredita que o maior salto da história humana ainda está por vir. E está sendo construído agora, na interseção entre biologia, IA e exploração espacial.</p>
     <div class="btns">
       <a href="/divisoes" class="btn btn-primary">O que fazemos</a>
       <a href="/projetos" class="btn btn-outline">Ver projetos</a>
@@ -41,14 +41,14 @@
 
 <div class="page" style="padding-top:60px; padding-bottom:40px;">
   <h2 class="title">Sobre Nós</h2>
-  <p class="about">A NeuroGen nasceu de uma pergunta simples: e se as maiores áreas do conhecimento humano parassem de trabalhar separadas? Juntamos inteligência artificial, biotecnologia e engenharia espacial num único lugar — não por moda, mas porque acreditamos que os problemas reais exigem esse tipo de pensamento cruzado.</p>
+  <p class="about">A NeuroGen nasceu de uma pergunta simples: e se as maiores áreas do conhecimento humano parassem de trabalhar separadas? Juntamos inteligência artificial, biotecnologia e engenharia espacial num único lugar. Não por moda, mas porque acreditamos que os problemas reais exigem esse tipo de pensamento cruzado.</p>
 </div>
 
 <div class="divider"></div>
 
 <div class="page" style="padding-top:60px; padding-bottom:80px;">
   <h2 class="title">Nossa Visão</h2>
-  <p class="vision">Não queremos só acompanhar o futuro — queremos ter participado de construí-lo. Cada projeto aqui é uma aposta de que a próxima grande virada da humanidade vai depender de gente disposta a conectar o que ainda não foi conectado.</p>
+  <p class="vision">Não queremos só acompanhar o futuro. Queremos ter participado de construí-lo. Cada projeto aqui é uma aposta de que a próxima grande virada da humanidade vai depender de gente disposta a conectar o que ainda não foi conectado.</p>
 </div>
 
 <footer>© 2026 NeuroGen Technologies • Todos os direitos reservados</footer>
@@ -71,6 +71,25 @@
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       <span class="tab-label">Atlas AI</span>
     </a>
+    {% if username %}
+<a href="/dashboard" class="tab-btn">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z"/>
+        <path d="M4 22a8 8 0 1116 0"/>
+    </svg>
+    <span class="tab-label">Conta</span>
+</a>
+{% else %}
+<a href="/login" class="tab-btn">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z"/>
+        <path d="M4 22a8 8 0 1116 0"/>
+    </svg>
+    <span class="tab-label">Entrar</span>
+</a>
+{% endif %}
+
+    
   </div>
 </div>
 

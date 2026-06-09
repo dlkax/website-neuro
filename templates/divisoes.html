@@ -70,6 +70,23 @@
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       <span class="tab-label">Atlas AI</span>
     </a>
+    {% if username %}
+<a href="/dashboard" class="tab-btn">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z"/>
+        <path d="M4 22a8 8 0 1116 0"/>
+    </svg>
+    <span class="tab-label">Conta</span>
+</a>
+{% else %}
+<a href="/login" class="tab-btn">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z"/>
+        <path d="M4 22a8 8 0 1116 0"/>
+    </svg>
+    <span class="tab-label">Entrar</span>
+</a>
+{% endif %}
   </div>
 </div>
 

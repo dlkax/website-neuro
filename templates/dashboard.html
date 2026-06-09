@@ -1,14 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NeuroGen Atlas Dashboard</title>
-
+<title>Dashboard - NeuroGen Atlas</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="/static/style.css">
 </head>
 
@@ -17,165 +13,133 @@
 <div id="stars"></div>
 
 <nav>
-
-    <div class="logo">
-        NEUROGEN
-    </div>
-
-    <div class="nav-links">
-
-        <a href="/">
-            Site Principal
-        </a>
-
-        <span class="user-badge">
-            👤 {{ username }}
-        </span>
-
-        <a href="/logout">
-            Sair
-        </a>
-
-    </div>
-
+  <div class="logo" onclick="window.location.href='/'">NEUROGEN</div>
+  <div class="nav-links">
+    <a href="/">Início</a>
+    <a href="/divisoes">Divisões</a>
+    <a href="/projetos">Projetos</a>
+    <a href="/atlas">Atlas AI</a>
+    <a href="/dashboard" class="active">Dashboard</a>
+    <span class="user-badge">👤 {{ username }}</span>
+    <a href="/logout">Sair</a>
+  </div>
 </nav>
 
 <section class="dashboard-container">
 
-    <div class="dashboard-header">
+  <div class="dashboard-header">
+    <h1>Bem-vindo, {{ username }}</h1>
+    <p>Centro de controle da NeuroGen Atlas.</p>
+  </div>
 
-        <h1>
-            Bem-vindo, {{ username }}
-        </h1>
+  <div class="dashboard-grid">
 
-        <p>
-            Centro de controle da NeuroGen Atlas.
-        </p>
+   <div class="dashboard-card">
 
+    <h3>👤 Perfil</h3>
+
+    <p><strong>Usuário:</strong> {{ username }}</p>
+
+    <p><strong>Email:</strong> {{ email }}</p>
+
+    <p><strong>Cargo:</strong> {{ role }}</p>
+
+    <p><strong>Membro desde:</strong> {{ created_at }}</p>
+
+</div>
+
+    <div class="dashboard-card">
+      <h3>🚀 Projetos</h3>
+      <p>Projetos ativos da NeuroGen.</p>
+      <div class="dashboard-value">6</div>
     </div>
 
-    <div class="dashboard-grid">
-
-        <div class="dashboard-card">
-
-            <h3>👤 Perfil</h3>
-
-            <p>
-                Usuário autenticado no sistema.
-            </p>
-
-            <div class="dashboard-value">
-                {{ username }}
-            </div>
-
-        </div>
-
-        <div class="dashboard-card">
-
-            <h3>🚀 Projetos</h3>
-
-            <p>
-                Projetos ativos da NeuroGen.
-            </p>
-
-            <div class="dashboard-value">
-                6
-            </div>
-
-        </div>
-
-        <div class="dashboard-card">
-
-            <h3>🤖 Atlas AI</h3>
-
-            <p>
-                Assistente disponível.
-            </p>
-
-            <div class="dashboard-value">
-                ONLINE
-            </div>
-
-        </div>
-
-        <div class="dashboard-card">
-
-            <h3>🧬 Divisões</h3>
-
-            <p>
-                Áreas de pesquisa.
-            </p>
-
-            <div class="dashboard-value">
-                4
-            </div>
-
-        </div>
-
+    <div class="dashboard-card">
+      <h3>🤖 Atlas AI</h3>
+      <p>Assistente em desenvolvimento.</p>
+      <div class="dashboard-value" style="font-size:1.2rem; color:#22d3ee;">Em breve</div>
     </div>
 
-    <div class="dashboard-panel">
-
-        <h2>
-            Painel NeuroGen
-        </h2>
-
-        <p>
-            Futuramente você poderá acessar:
-        </p>
-
-        <ul>
-
-            <li>Atlas AI Premium</li>
-
-            <li>Projetos privados</li>
-
-            <li>Perfil completo</li>
-
-            <li>Configurações da conta</li>
-
-            <li>Sistema de equipes</li>
-
-            <li>NeuroGen Research Hub</li>
-
-        </ul>
-
+    <div class="dashboard-card">
+      <h3>🧬 Divisões</h3>
+      <p>Áreas de pesquisa.</p>
+      <div class="dashboard-value">4</div>
     </div>
+
+  </div>
+
+  <div class="dashboard-panel">
+    <h2>Painel NeuroGen</h2>
+    <p>Futuramente você poderá acessar:</p>
+    <div class="cards" style="margin-top: 20px;">
+      <div class="card">
+        <h3>👥 Sistema de Equipes</h3>
+        <p>Colabore com outros membros e gerencie times dentro da plataforma.</p>
+        <div class="status-pill pill-research"><div class="pill-dot"></div>Planejado</div>
+      </div>
+      <div class="card">
+        <h3>🔬 Research Hub</h3>
+        <p>Central de pesquisa com acesso a dados, publicações e experimentos.</p>
+        <div class="status-pill pill-research"><div class="pill-dot"></div>Planejado</div>
+      </div>
+    </div>
+  </div>
 
 </section>
 
+<div class="bottom-tabs">
+  <div class="bottom-tabs-inner">
+    <a href="/" class="tab-btn">
+      <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+      <span class="tab-label">Início</span>
+    </a>
+    <a href="/divisoes" class="tab-btn">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+      <span class="tab-label">Divisões</span>
+    </a>
+    <a href="/projetos" class="tab-btn">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span class="tab-label">Projetos</span>
+    </a>
+    <a href="/atlas" class="tab-btn">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <span class="tab-label">Atlas AI</span>
+    </a>
+    {% if username %}
+<a href="/dashboard" class="tab-btn">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z"/>
+        <path d="M4 22a8 8 0 1116 0"/>
+    </svg>
+    <span class="tab-label">Conta</span>
+</a>
+{% else %}
+<a href="/login" class="tab-btn">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z"/>
+        <path d="M4 22a8 8 0 1116 0"/>
+    </svg>
+    <span class="tab-label">Entrar</span>
+</a>
+{% endif %}
+  </div>
+</div>
+
 <script>
-
-const starsContainer =
-document.getElementById("stars");
-
-for(let i=0;i<400;i++){
-
-    const star =
-    document.createElement("div");
-
-    star.className="star";
-
-    const size =
-    Math.random()*2+1;
-
-    star.style.width=size+"px";
-    star.style.height=size+"px";
-
-    star.style.left=
-    Math.random()*100+"%";
-
-    star.style.top=
-    Math.random()*100+"%";
-
-    star.style.animationDuration=
-    (Math.random()*5+3)+"s";
-
-    starsContainer.appendChild(star);
+const starsContainer = document.getElementById("stars");
+for(let i = 0; i < 400; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  const size = Math.random() * 2 + 1;
+  star.style.width = size + "px";
+  star.style.height = size + "px";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDuration = (Math.random() * 5 + 3) + "s";
+  star.style.animationDelay = (Math.random() * 10) + "s";
+  starsContainer.appendChild(star);
 }
-
 </script>
 
 </body>
 </html>
-

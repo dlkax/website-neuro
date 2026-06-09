@@ -39,12 +39,12 @@
     <div class="card">
       <h3>AURORA-X</h3>
       <p>Conceito de propulsão iônica para missões de longa distância. Ainda tem muito chão pela frente, mas a direção está certa.</p>
-      <div class="status-pill pill-active"><div class="pill-dot"></div>Ativo</div>
+      <div class="status-pill pill-dev"><div class="pill-dot"></div>Em desenvolvimento</div>
     </div>
     <div class="card">
-      <h3>Genesis AI</h3>
-      <p>Um sistema multiagente de IA focado em ciência e engenharia. A ideia é simples: fazer a IA trabalhar como uma equipe, não como um único cérebro.</p>
-      <div class="status-pill pill-active"><div class="pill-dot"></div>Ativo</div>
+      <h3>Atlas AI</h3>
+      <p>O Atlas está sendo construído pra ser mais do que um chatbot. A ideia é ter um assistente que realmente entende o que a NeuroGen faz que conhece os projetos, fala sobre as pesquisas e consegue te ajudar a navegar pelo que estamos construindo aqui.</p>
+      <div class="status-pill pill-dev"><div class="pill-dot"></div>Em desenvolvimento</div>
     </div>
     <div class="card">
       <h3>Projeto Helix</h3>
@@ -84,6 +84,23 @@
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       <span class="tab-label">Atlas AI</span>
     </a>
+    {% if username %}
+<a href="/dashboard" class="tab-btn">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z"/>
+        <path d="M4 22a8 8 0 1116 0"/>
+    </svg>
+    <span class="tab-label">Conta</span>
+</a>
+{% else %}
+<a href="/login" class="tab-btn">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z"/>
+        <path d="M4 22a8 8 0 1116 0"/>
+    </svg>
+    <span class="tab-label">Entrar</span>
+</a>
+{% endif %}
   </div>
 </div>
 
